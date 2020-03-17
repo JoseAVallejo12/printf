@@ -38,23 +38,3 @@ int _printf(const char *format, ...)
 	va_end(data);
 	return (len_format);
 }
-
-
-/**
- * main - mant for test printf
- *
- * Return: Always 0 int
- */
-
-int main(void)
-{
-	int i = 0;
-
-	i = _printf("Imprimir %s %c, %i", "Betty", 'C', 2443);
-	printf("\n%d return de _ptf\n", i);
-
-	i = printf("Imprimir %s %c, %i", "Betty", 'C', 2443);
-	printf("\n%d return de ptf\n", i);
-
-	return (i);
-}

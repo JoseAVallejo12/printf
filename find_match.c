@@ -1,6 +1,4 @@
 #include "holberton.h"
-#include <string.h>
-#include <stdlib.h>
 
 /**
  * print_int - print integer and length
@@ -13,7 +11,7 @@ int print_int(va_list data_string)
 	/* declaration of all var */
 	int integer_value;
 	int i, len_int;
-	char buffer[5], c;
+	char buffer[20] = "", c;
 
 	/* inicialice all var */
 	integer_value = 0;
@@ -21,7 +19,7 @@ int print_int(va_list data_string)
 	itoa_int(buffer, integer_value);
 
 	/* code */
-	for (i = 0; i < 5; ++i)
+	for (i = 0; buffer[i] != '\0'; ++i)
 	{
 		c = buffer[i];
 		write(1, &c, 1);
@@ -81,6 +79,24 @@ int print_str(va_list data_string)
 	return (len_string);
 }
 
+
+/**
+ * print_porcent - print simbol %%
+ * @data_string: argument passed of _printf funtion
+ * Return: length of value
+ */
+
+int print_porcent(va_list data_string)
+{
+	(void) data_string;
+	char c = '%';
+
+	write(1, &c, 1);
+
+	return (1);
+}
+
+
 /**
  * find_match - find coincidences in the string
  * @s: string in
@@ -99,8 +115,10 @@ int (*find_match(const char *s, int *z))(va_list)
 	/* Declaring structure */
 	op_fmt options[] = {
 		{"i", print_int},
+		{"d", print_int},
 		{"c", print_char},
 		{"s", print_str},
+		{"%", print_porcent},
 		{NULL, NULL}
 	};
 
@@ -108,7 +126,7 @@ int (*find_match(const char *s, int *z))(va_list)
 	while (s != NULL && s[aux] != '\0')
 	{
 		i = 0; /*Reset variable i*/
-		while (i < 3)/*While for evaluate each format*/
+		while (i < 5)/*While for evaluate each format*/
 		{
 			if (s[aux] == options[i].fmt[0])
 			{
