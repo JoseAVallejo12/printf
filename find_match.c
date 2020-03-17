@@ -3,6 +3,28 @@
 
 
 /**
+ * print_int - print integer and length
+ * @data_string: argument passed of _printf funtion
+ */
+
+int print_int(va_list data_string)
+{
+	/* declaration of all var */
+	int integer_value;
+	int len_string;
+
+	/* inicialice all var */
+	len_string = integer_value = 0;
+	integer_value = va_arg(data_string, int);
+
+	/* code */
+/*	len_string += write(1, &c, 1);*/
+	printf("%d", integer_value);
+
+	return (len_string + sizeof(integer_value));
+}
+
+/**
  * print_char - print character and length
  * @data_string: argument passed of _printf funtion
  */
@@ -58,7 +80,7 @@ int (*find_match(const char *s, int *z))(va_list)
 
 	/* Declaring structure */
 	op_fmt options[] = {
-	/*	{"i", print_int}, */
+		{"i", print_int},
 	/*	{"d", print_dec}, */
 		{"c", print_char},
 	/*	{"f", print_float}, */
@@ -77,7 +99,7 @@ int (*find_match(const char *s, int *z))(va_list)
 	while (s != NULL && s[aux] != '\0')
 	{
 		i = 0; /*Reset variable i*/
-		while (i < 2)/*While for evaluate each format*/
+		while (i < 3)/*While for evaluate each format*/
 		{
 			if (s[aux] == options[i].fmt[0])
 			{

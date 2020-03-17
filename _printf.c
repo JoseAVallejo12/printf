@@ -39,7 +39,7 @@ int _printf(const char *format,...)
 int main()
 {
 	int i = 0;
-	i = _printf("Imprimir %s %s %s %s %c", "Hello", "World", "Betty", "Ok", 'C');
+	i = _printf("Imprimir %s %s %s %s %c, %i", "Hello", "World", "Betty", "Ok", 'C', 'f');
 	printf("\n%d return de _ptf\n", i);
 	return (i);
 }
