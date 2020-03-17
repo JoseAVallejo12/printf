@@ -1,19 +1,41 @@
 #include "holberton.h"
 #include <string.h>
+
+
 /**
- * find_match - find mathc of src in dest
- *
+ * print_char - print character and length
+ * @data_string: argument passed of _printf funtion
+ */
+int print_char(va_list data_string)
+{
+	/* declaration of all var */
+	char c;
+	int len_string;
+
+	/* inicialice all var */
+	len_string = 0;
+	c = va_arg(data_string, int);
+
+	/* code */
+	len_string += write(1, &c, 1);
+
+	return (len_string);
+}
+
+/**
+ * print_str - print character to character and length
+ * @data_string: argument passed of _printf funtion
  */
 int print_str(va_list data_string)
 {
 	/* declaration of all var */
 	char *p, c;
 	int len_string, i;
-	
+
 	/* inicialice all var */
 	len_string = 0;
 	p = va_arg(data_string, char *);
-	
+
 	/* code */
 	for (i = 0; *(p + i) != '\0'; ++i)
 	{
@@ -36,12 +58,12 @@ int (*find_match(const char *s, int *z))(va_list)
 
 	/* Declaring structure */
 	op_fmt options[] = {
-		/* {"i", print_int},
-		{"d", print_dec},
+	/*	{"i", print_int}, */
+	/*	{"d", print_dec}, */
 		{"c", print_char},
-		{"f", print_float}, */
+	/*	{"f", print_float}, */
 		{"s", print_str},
-		/* {"x", print_hexa},
+	/*	{"x", print_hexa},
 		{"X", print_HEXA},
 		{"o", print_octal},
 		{"p", print_adress},
@@ -62,13 +84,6 @@ int (*find_match(const char *s, int *z))(va_list)
 				aux = (*z + 2);
 				return (options[i].p); /*Assign values*/
 			}
-
-			else
-			{
-				aux = (*z + 1);
-				return (NULL);
-			}
-
 			i++;
 		}
 
