@@ -1,6 +1,12 @@
 #include "holberton.h"
 
-int _printf(const char *format,...)
+/**
+ * _printf - copy of funtion boult.in printf
+ * @format: format
+ * Return: length of string
+ */
+
+int _printf(const char *format, ...)
 {
 	/* declarate all variables */
 	va_list data;
@@ -13,7 +19,7 @@ int _printf(const char *format,...)
 	va_start(data, format);
 
 	/* check each letter of format, find to % character */
-	while(*(format + i) != '\0')
+	while (*(format + i) != '\0')
 	{
 		if (*(format + i) != '%')
 		{
@@ -33,13 +39,22 @@ int _printf(const char *format,...)
 	return (len_format);
 }
 
-/* funtion - mant for test printf
+
+/**
+ * main - mant for test printf
+ *
+ * Return: Always 0 int
  */
 
-int main()
+int main(void)
 {
 	int i = 0;
-	i = _printf("Imprimir %s %s %s %s %c, %i", "Hello", "World", "Betty", "Ok", 'C', 'f');
+
+	i = _printf("Imprimir %s %c, %i", "Betty", 'C', 2443);
 	printf("\n%d return de _ptf\n", i);
+
+	i = printf("Imprimir %s %c, %i", "Betty", 'C', 2443);
+	printf("\n%d return de ptf\n", i);
+
 	return (i);
 }

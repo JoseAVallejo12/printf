@@ -1,32 +1,44 @@
 #include "holberton.h"
 #include <string.h>
-
+#include <stdlib.h>
 
 /**
  * print_int - print integer and length
  * @data_string: argument passed of _printf funtion
+ * Return: length of value
  */
 
 int print_int(va_list data_string)
 {
 	/* declaration of all var */
 	int integer_value;
-	int len_string;
+	int i, len_int;
+	char buffer[5], c;
 
 	/* inicialice all var */
-	len_string = integer_value = 0;
+	integer_value = 0;
 	integer_value = va_arg(data_string, int);
+	itoa_int(buffer, integer_value);
 
 	/* code */
-/*	len_string += write(1, &c, 1);*/
-	printf("%d", integer_value);
+	for (i = 0; i < 5; ++i)
+	{
+		c = buffer[i];
+		write(1, &c, 1);
+	}
 
-	return (len_string + sizeof(integer_value));
+	if (integer_value < 0)
+		len_int = sizeof(integer_value) + 1;
+	else
+		len_int = sizeof(integer_value);
+
+	return (len_int);
 }
 
 /**
  * print_char - print character and length
  * @data_string: argument passed of _printf funtion
+ * Return: length of value
  */
 int print_char(va_list data_string)
 {
@@ -47,6 +59,7 @@ int print_char(va_list data_string)
 /**
  * print_str - print character to character and length
  * @data_string: argument passed of _printf funtion
+ * Return: length of value
  */
 int print_str(va_list data_string)
 {
@@ -68,7 +81,12 @@ int print_str(va_list data_string)
 	return (len_string);
 }
 
-
+/**
+ * find_match - find coincidences in the string
+ * @s: string in
+ * @z: pointer int to position in string coincidence
+ * Return: addres to funtion
+ */
 
 int (*find_match(const char *s, int *z))(va_list)
 {
@@ -81,17 +99,8 @@ int (*find_match(const char *s, int *z))(va_list)
 	/* Declaring structure */
 	op_fmt options[] = {
 		{"i", print_int},
-	/*	{"d", print_dec}, */
 		{"c", print_char},
-	/*	{"f", print_float}, */
 		{"s", print_str},
-	/*	{"x", print_hexa},
-		{"X", print_HEXA},
-		{"o", print_octal},
-		{"p", print_adress},
-		{"u", print_unsigned},
-		{"%%", print_porcentage},
-		{"r", print_unknow},*/
 		{NULL, NULL}
 	};
 
@@ -109,7 +118,7 @@ int (*find_match(const char *s, int *z))(va_list)
 			i++;
 		}
 
-	}/*End principal WHILE*/
+	} /*End principal WHILE*/
 
 	return (0);
 }
