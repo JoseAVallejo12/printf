@@ -5,7 +5,7 @@ int _printf(const char *format,...)
 	/* declarate all variables */
 	va_list data;
 	int len_format, i;
-	void (*op_funtion)(va_list);
+	int (*op_funtion)(va_list);
 	char letter;
 
 	/* inicialize all variables */
@@ -23,8 +23,10 @@ int _printf(const char *format,...)
 		else
 		{
 			op_funtion = find_match(format, &i);
-			op_funtion(data);
+			len_format = op_funtion(data);
+			i++;
 		}
+
 		i++;
 	}
 	va_end(data);
@@ -37,6 +39,6 @@ int _printf(const char *format,...)
 int main()
 {
 	int i = 0;
-	i = _printf("hola %  % por % gracias", "codigo", "como estas", "que yo mejor");
+	i = _printf("Imprimir. Str[1]:%s. Str[2]:%s. Str[3]:%s. Str[4]:%s", "Hello", "World", "Betty lo logramos XD!", "Toma lo tu-tuyo Betty");
 	return (i);
 }
