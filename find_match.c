@@ -6,12 +6,22 @@
  */
 int print_str(va_list data_string)
 {
-	char *p;
-
+	/* declaration of all var */
+	char *p, c;
+	int len_string, i;
+	
+	/* inicialice all var */
+	len_string = 0;
 	p = va_arg(data_string, char *);
-	write(1, p, strlen(p));
+	
+	/* code */
+	for (i = 0; *(p + i) != '\0'; ++i)
+	{
+		c = p[i];
+		len_string += write(1, &c, 1);
+	}
 
-	return (0);
+	return (len_string);
 }
 
 
@@ -24,20 +34,20 @@ int (*find_match(const char *s, int *z))(va_list)
 
 	aux = (*z + 1);
 
-	/*Declaring structure*/
+	/* Declaring structure */
 	op_fmt options[] = {
-		//{"i", print_int},
-		//{"d", print_dec},
-		//{"c", print_char},
-		//{"f", print_float},
+		/* {"i", print_int},
+		{"d", print_dec},
+		{"c", print_char},
+		{"f", print_float}, */
 		{"s", print_str},
-		//{"x", print_hexa},
-		//{"X", print_HEXA},
-		//{"o", print_octal},
-		//{"p", print_adress},
-		//{"u", print_unsigned},
-		//{"%%", print_porcentage},
-		//{"r", print_unknow},
+		/* {"x", print_hexa},
+		{"X", print_HEXA},
+		{"o", print_octal},
+		{"p", print_adress},
+		{"u", print_unsigned},
+		{"%%", print_porcentage},
+		{"r", print_unknow},*/
 		{NULL, NULL}
 	};
 
