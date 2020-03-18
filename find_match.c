@@ -27,6 +27,8 @@ int print_int(va_list data_string)
 
 	if (integer_value < 0)
 		len_int = sizeof(integer_value) + 1;
+	else if (buffer == NULL)
+		len_int = -1;
 	else
 		len_int = sizeof(integer_value);
 
@@ -49,6 +51,9 @@ int print_char(va_list data_string)
 	c = va_arg(data_string, int);
 
 	/* code */
+	if (c == '\0')
+		return (-1);
+
 	len_string += write(1, &c, 1);
 
 	return (len_string);
@@ -69,7 +74,11 @@ int print_str(va_list data_string)
 	len_string = 0;
 	p = va_arg(data_string, char *);
 
+
 	/* code */
+	if (p == NULL)
+		len_string = -1;
+
 	for (i = 0; *(p + i) != '\0'; ++i)
 	{
 		c = p[i];
@@ -123,10 +132,10 @@ int (*find_match(const char *s, int *z))(va_list)
 	};
 
 	/*Check NO NULL*/
-	while (s != NULL && s[aux] != '\0')
+	while (s != NULL && s[aux] != '\0' && s[aux] != ' ')
 	{
 		i = 0; /*Reset variable i*/
-		while (i < 5)/*While for evaluate each format*/
+		while (options[i].fmt[0] != '\0')/*While for evaluate each format*/
 		{
 			if (s[aux] == options[i].fmt[0])
 			{
@@ -135,8 +144,9 @@ int (*find_match(const char *s, int *z))(va_list)
 			}
 			i++;
 		}
+		break;
 
 	} /*End principal WHILE*/
 
-	return (0);
+	return (NULL);
 }
