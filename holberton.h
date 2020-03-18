@@ -7,27 +7,25 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-/* Prototype funtion own */
-int (*find_match(const char *, int *))(va_list);
-int _printf(const char *, ...);
-char *itoa_int(char *, int);
-int print_int(va_list);
-int print_char(va_list);
-int print_str(va_list);
-int print_porcent(va_list);
-
-
 /**
  * struct options - structure
  * @fmt: Pointer
  * @p: pointer
  */
-
-typedef struct options
+struct options
 {
 	char *fmt;
 	int (*p)(va_list);
-} op_fmt;
+};
+typedef struct options op_fmt;
+
+/* Prototype funtion own */
+int (*find_match(const char *s, int *z))(va_list);
+int _printf(const char *format, ...);
+char *itoa_int(char *dest, int i);
+int print_int(va_list data_string);
+int print_char(va_list data_string);
+int print_str(va_list data_string);
+int print_porcent(va_list data_string);
 
 #endif
-

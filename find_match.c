@@ -32,6 +32,7 @@ int print_int(va_list data_string)
 	else
 		len_int = sizeof(integer_value);
 
+	va_end(data_string);
 	return (len_int);
 }
 
@@ -56,6 +57,7 @@ int print_char(va_list data_string)
 
 	len_string += write(1, &c, 1);
 
+	va_end(data_string);
 	return (len_string);
 }
 
@@ -85,6 +87,7 @@ int print_str(va_list data_string)
 		len_string += write(1, &c, 1);
 	}
 
+	va_end(data_string);
 	return (len_string);
 }
 
@@ -102,6 +105,7 @@ int print_porcent(va_list data_string)
 
 	write(1, &c, 1);
 
+	va_end(data_string);
 	return (1);
 }
 
