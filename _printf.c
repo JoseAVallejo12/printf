@@ -34,8 +34,10 @@ int _printf(const char *format, ...)
 			if (op_funtion == NULL)
 				return (-1);
 			check = op_funtion(data);
-			if (check == -1)
+			if (check == -1) {
 				len_format = -1;
+				i++;
+			}
 			else
 			{
 				len_format += check;

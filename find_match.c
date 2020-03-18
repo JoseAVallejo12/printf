@@ -45,20 +45,23 @@ int print_char(va_list data_string)
 {
 	/* declaration of all var */
 	char c;
-	int len_string;
+	int len_char;
 
 	/* inicialice all var */
-	len_string = 0;
+	len_char = 0;
 	c = va_arg(data_string, int);
 
 	/* code */
 	if (c == '\0')
+	{
+		len_char += _write_char(' ');
 		return (-1);
+	}
 
-	len_string += _write_char(c);
+	len_char += _write_char(c);
 
 	va_end(data_string);
-	return (len_string);
+	return (len_char);
 }
 
 /**
@@ -71,6 +74,7 @@ int print_str(va_list data_string)
 	/* declaration of all var */
 	char *p, c;
 	int len_string, i;
+	char *nulo = "(null)";
 
 	/* inicialice all var */
 	len_string = 0;
@@ -79,12 +83,21 @@ int print_str(va_list data_string)
 
 	/* code */
 	if (p == NULL)
-		len_string = -1;
-
-	for (i = 0; *(p + i) != '\0'; ++i)
 	{
-		c = p[i];
-		len_string += _write_char(c);
+		i = 0;
+		while(*(nulo + i) != '\0')
+		{
+			len_string += _write_char(nulo[i]);
+			i++;
+		}
+	}
+	else
+	{
+		for (i = 0; *(p + i) != '\0'; ++i)
+		{
+			c = p[i];
+			len_string += _write_char(c);
+		}
 	}
 
 	va_end(data_string);
@@ -128,8 +141,16 @@ int (*find_match(const char *s, int *z))(va_list)
 		{"%", print_porcent},
 		{NULL, NULL}
 	};
-
+	
 	aux = (*z + 1);
+
+	if (s[aux] == '\0' || s[aux] == '\n')
+	{
+		 puts("%");
+		 return (NULL);
+	}
+
+
 	/*Check NO NULL*/
 	while (s != NULL && s[aux] != '\0' && s[aux] != ' ')
 	{
@@ -144,8 +165,9 @@ int (*find_match(const char *s, int *z))(va_list)
 			i++;
 		}
 		break;
+	}
 
-	} /*End principal WHILE*/
+
 
 	return (NULL);
 }
