@@ -7,46 +7,40 @@
 int _printf(const char *format, ...)
 {
 	va_list data;
-	int len_format, i, check_print;
+	int len_format, i, check;
 	int (*op_funtion)(va_list);
 	char letter;
 
 	i = len_format = 0;
 	va_start(data, format);
-
 	if (format == NULL)
 		return (-1);
-
 	while (*(format + i) != '\0')
 	{
 		if (*(format + i) != '%')
+		{	letter = format[i];
+			len_format += _write_char(letter); }
+		else if (format[i] == '%')
 		{
-			letter = format[i];
-			len_format += _write_char(letter);
-		}
-		else if (format[i] == '%' && format[i + 1] != ' ')
-		{
+			if (format[i + 1] == ' ')
+			{	i++;
+				letter = format[i];
+				len_format += _write_char(letter); }
 			op_funtion = find_match(format, &i);
-			if (op_funtion != NULL)
+			if (op_funtion == NULL)
+				return (-1);
+			check = op_funtion(data);
+			if (check == -1)
 			{
-				check_print = op_funtion(data);
-				if (check_print == -1)
-					return (-1);
-
-				else
-				{
-					len_format += check_print;
-					i++;
-				}
+				len_format = -1;
+				i++;
 			}
-
+			else
+			{
+				len_format += check;
+				i++;
+			}
 		}
-		else if (format[i] == '%' && format[i + 1] == '\0')
-		{
-			len_format += _write_char(format[i]);
-			break;
-		}
-
 		i++;
 	}
 	va_end(data);
