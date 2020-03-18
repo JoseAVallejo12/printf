@@ -1,0 +1,39 @@
+
+.\" Contact 1543@holbertonschool.com to correct errors or typos
+.TH printf 1 "17 March 2020" "version 1.0" "printf_ man page"
+.SH NAME
+.B PRINTF 
+- It is a simple prototype of the original printf function used in the C
+.SH SYNOPSIS
+.B PRINTF
+: All libraries and prototypes to be used are in the "holberton.h" library, for this reason all files start with #include "holberton.h"
+.SH DESCRIPTION
+This function is designed to output according to a format as detailed below. This function writes its output to the standard output, the standard output stream. 
+
+.RI "[" OPTION "]..."
+To use _printf you have to use the following key characters preceeded by % symbol.
+.RS 3
+%c: To be used to print characters
+.RS 0
+%s: To be used to print strings
+.RS 0
+%d: To print integers
+.RS 0
+%i: To print integers 
+.RS 0
+%o: To print a number in octal 
+.RS 0
+%x: To print a number in hexadecimal  
+.RS 0
+%%: To print a porcentage symbol
+.SH EXIT STATUS
+The function will always return an integer, corresponding to the symbol, without countingthe null string. 
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Carlos Barros (1543@holbertonschool.com)
+Jose Vallejo (1545@holbertonschool.com)
+.SH COPYRIGHT
+MIT License
+.PP
+Copyright (c) 2020 Carlos Barros & Jose Vallejo
