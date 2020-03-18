@@ -131,7 +131,7 @@ int (*find_match(const char *s, int *z))(va_list)
 
 	aux = (*z + 1);
 	/*Check NO NULL*/
-	while (s != NULL && s[aux] != '\0' && s[aux] != ' ')
+	if (s != NULL && s[aux] != '\0')
 	{
 		i = 0; /*Reset variable i*/
 		while (options[i].fmt[0] != '\0')/*While for evaluate each format*/
@@ -143,9 +143,7 @@ int (*find_match(const char *s, int *z))(va_list)
 			}
 			i++;
 		}
-		break;
-
-	} /*End principal WHILE*/
+	} /*End principal WHILE */
 
 	return (NULL);
 }
