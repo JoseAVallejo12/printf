@@ -30,18 +30,23 @@ int _printf(const char *format, ...)
 			if (op_funtion != NULL)
 			{
 				check_print = op_funtion(data);
-					if (check_print == -1)
-						return (-1);
+				if (check_print == -1)
+					return (-1);
 
-					else
-					{
+				else
+				{
 					len_format += check_print;
 					i++;
-					}
+				}
 			}
+
 		}
-		else if (format[i] == '%' && format[i + 1] == ' ')
+		else if (format[i] == '%' && format[i + 1] == '\0')
+		{
 			len_format += _write_char(format[i]);
+			break;
+		}
+
 		i++;
 	}
 	va_end(data);

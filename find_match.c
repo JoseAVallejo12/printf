@@ -119,7 +119,7 @@ int print_porcent(va_list data_string)
 int (*find_match(const char *s, int *z))(va_list)
 {
 	/*Declaring structure*/
-	int i, aux;
+	int i, next;
 	op_fmt options[] = {
 		{"i", print_int},
 		{"d", print_int},
@@ -129,18 +129,20 @@ int (*find_match(const char *s, int *z))(va_list)
 		{NULL, NULL}
 	};
 
-	aux = (*z + 1);
+	next = (*z + 1);
+	/*current = (*z + 0);*/
 	/*Check NO NULL*/
-	if (s != NULL && s[aux] != '\0')
+	if (s != NULL && s[next] != '\0')
 	{
 		i = 0; /*Reset variable i*/
 		while (options[i].fmt[0] != '\0')/*While for evaluate each format*/
 		{
-			if (s[aux] == options[i].fmt[0])
+			if (s[next] == options[i].fmt[0])
 			{
-				aux = (*z + 2);
+				next = (*z + 2);
 				return (options[i].p); /*Assign values*/
 			}
+
 			i++;
 		}
 	} /*End principal WHILE */
