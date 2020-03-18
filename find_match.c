@@ -101,9 +101,8 @@ int print_str(va_list data_string)
 int print_porcent(va_list data_string)
 {
 	(void) data_string;
-	char c = '%';
 
-	_write_char(c);
+	_write_char(37);
 
 	va_end(data_string);
 	return (1);
@@ -120,12 +119,7 @@ int print_porcent(va_list data_string)
 int (*find_match(const char *s, int *z))(va_list)
 {
 	/*Declaring structure*/
-	int i;
-	int aux;
-
-	aux = (*z + 1);
-
-	/* Declaring structure */
+	int i, aux;
 	op_fmt options[] = {
 		{"i", print_int},
 		{"d", print_int},
@@ -135,6 +129,7 @@ int (*find_match(const char *s, int *z))(va_list)
 		{NULL, NULL}
 	};
 
+	aux = (*z + 1);
 	/*Check NO NULL*/
 	while (s != NULL && s[aux] != '\0' && s[aux] != ' ')
 	{
