@@ -20,7 +20,7 @@ int _printf(const char *format, ...)
 		if (*(format + i) != '%')
 		{
 			letter = format[i];
-			len_format += write(1, &letter, 1);
+			len_format += _write_char(letter);
 		}
 		else if (format[i] == '%')
 		{
@@ -28,7 +28,7 @@ int _printf(const char *format, ...)
 			{
 				i++;
 				letter = format[i];
-				len_format += write(1, &letter, 1);
+				len_format += _write_char(letter);
 			}
 			op_funtion = find_match(format, &i);
 			if (op_funtion == NULL)

@@ -22,7 +22,7 @@ int print_int(va_list data_string)
 	for (i = 0; buffer[i] != '\0'; ++i)
 	{
 		c = buffer[i];
-		write(1, &c, 1);
+		_write_char(c);
 	}
 
 	if (integer_value < 0)
@@ -55,7 +55,7 @@ int print_char(va_list data_string)
 	if (c == '\0')
 		return (-1);
 
-	len_string += write(1, &c, 1);
+	len_string += _write_char(c);
 
 	va_end(data_string);
 	return (len_string);
@@ -84,7 +84,7 @@ int print_str(va_list data_string)
 	for (i = 0; *(p + i) != '\0'; ++i)
 	{
 		c = p[i];
-		len_string += write(1, &c, 1);
+		len_string += _write_char(c);
 	}
 
 	va_end(data_string);
@@ -103,7 +103,7 @@ int print_porcent(va_list data_string)
 	(void) data_string;
 	char c = '%';
 
-	write(1, &c, 1);
+	_write_char(c);
 
 	va_end(data_string);
 	return (1);

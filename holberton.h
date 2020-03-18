@@ -27,5 +27,6 @@ int print_int(va_list data_string);
 int print_char(va_list data_string);
 int print_str(va_list data_string);
 int print_porcent(va_list data_string);
+int _write_char(char c);
 
 #endif
