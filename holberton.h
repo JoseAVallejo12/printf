@@ -4,16 +4,6 @@
 #include <stdarg.h>
 #include <stdlib.h>
 
-int find_match(va_list datos, const char *format, int index);
-int _printf(const char *format, ...);
-char *itoa_int(char *dest, int i);
-int print_int(va_list data_string);
-int print_char(va_list data_string);
-int print_str(va_list data_string);
-int print_porcent(va_list data_string);
-int _write_char(char c);
-void *_malloc(unsigned int b);
-
 /**
  * struct options - structure
  * @fmt: Pointer
@@ -28,4 +18,13 @@ typedef struct options op_fmt;
 
 /*Others functions*/
 
+int find_match(va_list datos, const char *format, int index);
+int _printf(const char *format, ...);
+char *itoa_int(char *dest, int i);
+int print_int(va_list data_string);
+int print_char(va_list data_string);
+int print_str(va_list data_string);
+int print_porcent(va_list data_string);
+int _write_char(char c);
+void *_malloc(unsigned int b);
 #endif
