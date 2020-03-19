@@ -16,6 +16,11 @@ int _printf(const char *format, ...)
 	if (format == NULL)
 		return (-1);
 
+	for (i = 0; format[i] != '\0'; i++)
+		;
+	if (i == 0)
+		return (0);
+	i = 0;
 	while (*(format + i) != '\0')
 	{
 		if (*(format + i) != '%')
@@ -28,17 +33,13 @@ int _printf(const char *format, ...)
 			check_print = find_match(data, format, i);
 
 			if (check_print == -1)
-			{
-
 				return (-1);
-			}
 
 			else
 			{
 				len_format = len_format + 1;
 				i++;
 			}
-
 		}
 		i++;
 	}

@@ -1,37 +1,35 @@
 #include "holberton.h"
 
 /**
- * _itoa - conver int to string
- * @dest: pointer to buffer
- * @i: integer value
- * Return: string
- */
-
-static char *_itoa(char *dest, int i)
+ *  * itoa - integer to ascii
+ *   * @num: num
+ *    * @base: base
+ *     *
+ *      * Return: char
+ *       * https://gist.github.com/narnat/95733cd0ad7bfac0d90697292914c407
+ *        **/
+char *itoa_int(long int num, int base)
 {
-	if (i <= -10)
-		dest = _itoa(dest, i / 10);
+	static char *array = "0123456789abcdef";
+	static char buffer[50];
+	char sign = 0;
+	char *ptr;
+	unsigned long n = num;
 
-	*dest++ = '0' - i % 10;
-	return (dest);
-}
+	if (num < 0)
+	{
+		n = -num;
+		sign = '-';
+	}
+	ptr = &buffer[49];
+	*ptr = '\0';
 
-/**
- * itoa_int - prototype main
- * @dest: pointer to buffer
- * @i: integer value
- * Return: string
- */
+	do{
+		*--ptr = array[n % base];
+		n /= base;
+	} while (n != 0);
 
-char *itoa_int(char *dest, int i)
-{
-	char *s = dest;
-
-	if (i < 0)
-		*s++ = '-';
-	else
-		i = -i;
-
-	*_itoa(s, i) = '\0';
-	return (dest);
+	if (sign)
+		*--ptr = sign;
+	return (ptr);
 }

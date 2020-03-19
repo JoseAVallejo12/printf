@@ -19,19 +19,19 @@ int find_match(va_list datos, const char *format, int index)
 		{"c", print_char},
 		{"s", print_str},
 		{"%", print_porcent},
-		{NULL, NULL}
 	};
+
+	if (format == NULL)
+		return (-1);
 
 	opt = format[index + 1];
 
-	if (format[index] == '%' && (opt == ' ' || opt == '\0'))
+	if (opt == '\0')
 		return (-1);
 
 	else if (format[index] == '%' && opt == '\n')
 		return (_write_char('%') + _write_char(opt));
 
-
-	/*Check NO NULL*/
 	i = 0;
 	while (i < 5)/*While for evaluate each format*/
 	{

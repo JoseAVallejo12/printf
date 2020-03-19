@@ -1,4 +1,5 @@
 #include "holberton.h"
+
 /**
  * print_int - print integer and length
  * @data_string: argument passed of _printf funtion
@@ -7,28 +8,16 @@
 
 int print_int(va_list data_string)
 {
-	char c;
-	int integer_value;
 	int i, len_int;
-	char d[1250];
+	char *d;
 
-	integer_value = 0;
-	integer_value = va_arg(data_string, int);
-
-	itoa_int(d, integer_value);
+	d = itoa_int(va_arg(data_string, int), 10);
+	
 	/* code */
 	for (i = 0; d[i] != '\0'; ++i)
 	{
-		c = d[i];
-		_write_char(c);
+		len_int += _write_char(d[i]);
 	}
-
-	if (integer_value < 0)
-		len_int = sizeof(integer_value) + 1;
-	else if (d == NULL)
-		len_int = -1;
-	else
-		len_int = sizeof(integer_value);
 
 	va_end(data_string);
 	return (len_int);
@@ -42,7 +31,7 @@ int print_int(va_list data_string)
 int print_char(va_list data_string)
 {
 	/* declaration of all var */
-	char c;
+	int c;
 	int len_char;
 
 	/* inicialice all var */
@@ -50,12 +39,12 @@ int print_char(va_list data_string)
 	c = va_arg(data_string, int);
 
 	/* code */
-	if (c == '\0')
+	if (c == '\0' || c > 255)
 	{
 		return (_write_char(' '));
 	}
-
-	len_char += _write_char(c);
+	else
+		len_char += _write_char(c);
 
 	va_end(data_string);
 	return (len_char);
@@ -69,9 +58,8 @@ int print_char(va_list data_string)
 int print_str(va_list data_string)
 {
 	/* declaration of all var */
-	char *p, c;
+	char *p;
 	int len_string, i;
-	char *nulo = "(null)";
 
 	/* inicialice all var */
 	len_string = 0;
@@ -80,21 +68,11 @@ int print_str(va_list data_string)
 
 	/* code */
 	if (p == NULL)
+		p = "(null)";
+	
+	for (i = 0; *(p + i) != '\0'; ++i)
 	{
-		i = 0;
-		while (*(nulo + i) != '\0')
-		{
-			len_string += _write_char(nulo[i]);
-			i++;
-		}
-	}
-	else
-	{
-		for (i = 0; *(p + i) != '\0'; ++i)
-		{
-			c = p[i];
-			len_string += _write_char(c);
-		}
+		len_string += _write_char(p[i]);
 	}
 
 	va_end(data_string);
