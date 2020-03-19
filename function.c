@@ -1,5 +1,4 @@
 #include "holberton.h"
-#include <limits.h>
 /**
  * print_int - print integer and length
  * @data_string: argument passed of _printf funtion
@@ -11,24 +10,10 @@ int print_int(va_list data_string)
 	char c;
 	int integer_value;
 	int i, len_int;
-	char *d;
+	char d[1250];
 
 	integer_value = 0;
 	integer_value = va_arg(data_string, int);
-
-	if (integer_value < 0)
-		d = _malloc(INT_MIN);
-
-	else
-		d = _malloc(INT_MAX);
-
-	if (d == NULL)
-	{
-		free(d);
-		return (-1);
-	}
-
-
 
 	itoa_int(d, integer_value);
 	/* code */
@@ -46,7 +31,6 @@ int print_int(va_list data_string)
 		len_int = sizeof(integer_value);
 
 	va_end(data_string);
-	free(d);
 	return (len_int);
 }
 
