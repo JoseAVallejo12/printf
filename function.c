@@ -32,22 +32,16 @@ int print_char(va_list data_string)
 {
 	/* declaration of all var */
 	int c;
-	int len_char;
+	/*int len_char;*/
 
 	/* inicialice all var */
-	len_char = 0;
 	c = va_arg(data_string, int);
 
-	/* code */
 	if (c == '\0' || c > 255)
-	{
-		return (0);
-	}
-	else
-		len_char += _write_char(c);
+		return (1 + _write_char(' '));
 
 	va_end(data_string);
-	return (len_char);
+	return (_write_char(c));
 }
 
 /**
