@@ -28,7 +28,7 @@ int find_match(va_list datos, const char *format, int index)
 		return (-1);
 
 	else if (format[index] == '%' && opt == '\n')
-		return (_write_char('%'));
+		return (_write_char('%') + _write_char(opt));
 
 
 	/*Check NO NULL*/
