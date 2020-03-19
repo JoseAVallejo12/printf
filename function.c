@@ -41,7 +41,7 @@ int print_char(va_list data_string)
 	/* code */
 	if (c == '\0' || c > 255)
 	{
-		return (_write_char(' '));
+		return (0);
 	}
 	else
 		len_char += _write_char(c);
@@ -91,9 +91,7 @@ int print_porcent(va_list data_string)
 {
 	(void) data_string;
 
-	_write_char(37);
-
 	va_end(data_string);
-	return (1);
+	return (_write_char('%'));
 
 }

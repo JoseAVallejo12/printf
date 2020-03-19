@@ -31,7 +31,7 @@ int find_match(va_list datos, const char *format, int index)
 
 	else if (format[index] == '%' && opt == '\n')
 		return (_write_char('%') + _write_char(opt));
-
+	
 	i = 0;
 	while (i < 5)/*While for evaluate each format*/
 	{
