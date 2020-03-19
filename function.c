@@ -1,5 +1,5 @@
 #include "holberton.h"
-
+#include <limits.h>
 /**
  * print_int - print integer and length
  * @data_string: argument passed of _printf funtion
@@ -8,13 +8,11 @@
 
 int print_int(va_list data_string)
 {
-	/* declaration of all var */
 	char c;
 	int integer_value;
 	int i, len_int;
 	char *d;
 
-	/* inicialice all var */
 	integer_value = 0;
 	integer_value = va_arg(data_string, int);
 
