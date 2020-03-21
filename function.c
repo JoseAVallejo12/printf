@@ -8,19 +8,30 @@
 
 int print_int(va_list data_string)
 {
-	int i, len_int;
-	char *d;
+	int n, div = 1, len = 0;
+	unsigned int num;
 
-	d = itoa_int(va_arg(data_string, int), 10);
-	
-	/* code */
-	for (i = 0; d[i] != '\0'; ++i)
+	n  = va_arg(data_string, int);
+	if (n < 0)
 	{
-		len_int += _write_char(d[i]);
+		len += _write_char('-');
+		num = n * -1;
+	}
+	else
+		num = n;
+
+	for (; num / div > 9; )
+		div *= 10;
+
+	for (; div != 0; )
+	{
+		len += _write_char('0' + num / div);
+		num %= div;
+		div /= 10;
 	}
 
-	va_end(data_string);
-	return (len_int);
+	return (len);
+
 }
 
 /**
@@ -37,8 +48,8 @@ int print_char(va_list data_string)
 	/* inicialice all var */
 	c = va_arg(data_string, int);
 
-	if (c == '\0' || c > 255)
-		return (1 + _write_char(' '));
+	if (c < 0 || c > 127)
+		return (_write_char(c));
 
 	va_end(data_string);
 	return (_write_char(c));
@@ -63,7 +74,7 @@ int print_str(va_list data_string)
 	/* code */
 	if (p == NULL)
 		p = "(null)";
-	
+
 	for (i = 0; *(p + i) != '\0'; ++i)
 	{
 		len_string += _write_char(p[i]);
