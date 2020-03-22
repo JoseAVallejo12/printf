@@ -9,23 +9,33 @@
 
 *The available convertion specifiers are:
 
-*%c: Prints a single character.
-*%s: Prints a string of characters.
-*%d: Prints integers.
-*%i: Prints integers.
-*%b: Prints the binary representation of an unsigned decimal.
-*%u: Prints unsigned integers
-*%x: Prints the hexadecial representation of an unsigned decimal in lowercase letters
-*%X:Prints the hexadecial representation of an unsigned decimal in uppercase letters
-*%r: Prints a reversed string
-*%R: Prints the Rot13 interpretation of a string
-*Usage
-*All the files are to be compiled on Ubuntu 14.04 LTS
-*Compile your code with gcc -Wall -Werror -Wextra -pedantic *.c
-*Include the "holberton.h" header file on the functions using the _printf()
+"%c: Prints a single character.
+"%s: Prints a string of characters.
+"%d: Prints integers.
+"%i: Prints integers.
+"%b: Prints the binary representation of an unsigned decimal.
+"%u: Prints unsigned integers
+"%x: Prints the hexadecial representation of an unsigned decimal in lowercase letters
+"%X:Prints the hexadecial representation of an unsigned decimal in uppercase letters
+"%r: Prints a reversed string
+"%R: Prints the Rot13 interpretation of a string
+
+"Usage
+"All the files are to be compiled on Ubuntu 14.04 LTS
+"Compile your code with gcc -Wall -Werror -Wextra -pedantic *.c
+"Include the "holberton.h" header file on the functions using the _printf()
+"Prototype: int _printf(const char *format, ...);
+"Returns: the number of characters printed (excluding the null byte used to end output to strings)
+"write output to stdout, the standard output stream
+"format is a character string. The format string is composed of zero or more directives. See man 3 printf for more detail. You need to handle the following conversion specifiers:
+"It's don’t have to buffer handling of the C library printf function
+"It's don’t have to handle the flag characters
+"It's don’t have to handle field width
+"It's don’t have to handle precision
+"It's don’t have to handle the length modifiers
 
 
-*Example program
+"Example program
 
 *printf: built-in funtion of C
 *_printf: Owner funtion
