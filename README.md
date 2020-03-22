@@ -21,10 +21,8 @@
 * %R: Prints the Rot13 interpretation of a string
 
 * Usage
-* All the files are to be compiled on Ubuntu 14.04 LTS
-* Compile your code with gcc -Wall -Werror -Wextra -pedantic *.c
-* Include the "holberton.h" header file on the functions using the _printf()
-* Prototype: int _printf(const char *format, ...);
+* All the files are to be compiled on Ubuntu 14.04 LTS with gcc -Wall -Werror -Wextra -pedantic *.c
+* Prototype ot the funtion is: int _printf(const char *format, ...);
 * Returns: the number of characters printed (excluding the null byte used to end output to strings)
 * write output to stdout, the standard output stream
 * format is a character string. The format string is composed of zero or more directives. See man 3 printf for more detail. You need to handle the following conversion specifiers:
@@ -36,6 +34,7 @@
 
 
 "Example program
+* FINTION ("ARGUMENTS",...(variatic parameters))
 
 *printf: built-in funtion of C
 *_printf: Owner funtion
