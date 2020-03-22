@@ -37,8 +37,16 @@ int main()
 	printf("css%ccs%scscscs\n", 'T', "Test");
 	_printf(NULL);
 	printf(NULL);
-	_printf("%c", '\0');
-	printf("%c", '\0');
+
+
+	alen = _printf("%c\n", '\0');
+	elen = printf("%c\n", '\0');
+	printf("p_ok: %d, _fp: %d\n", alen, elen);
+	
+	
+	
+	
+	
 	_printf("%");  /* SI EL SIG % ESTA SOLO NO IMPRIMIR NADA */
 	printf("%");
 	_printf("%!\n");

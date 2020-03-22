@@ -1,13 +1,13 @@
 #include "holberton.h"
 
 /**
- *  * itoa - integer to ascii
- *   * @num: num
- *    * @base: base
- *     *
- *      * Return: char
- *       * https://gist.github.com/narnat/95733cd0ad7bfac0d90697292914c407
- *        **/
+ * itoa_int - integer to ascii
+ * @num: num
+ * @base: base
+ *
+ * Return: char
+ * https://gist.github.com/narnat/95733cd0ad7bfac0d90697292914c407
+ **/
 char *itoa_int(long int num, int base)
 {
 	static char *array = "0123456789abcdef";
@@ -24,7 +24,7 @@ char *itoa_int(long int num, int base)
 	ptr = &buffer[49];
 	*ptr = '\0';
 
-	do{
+	do {
 		*--ptr = array[n % base];
 		n /= base;
 	} while (n != 0);
