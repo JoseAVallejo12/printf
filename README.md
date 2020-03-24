@@ -3,12 +3,12 @@
 _Jose Vallejo Contreras & Carlos Barros Amador_
 
 ## Synopsis
-"This is a simple implementation of printf function that formats and prints data
+This is a simple implementation of printf function that formats and prints data
 
 ## Description
-*The _printf() function produces output according to a format which is described below. This function write its output to the stdout, the standard output stream. Returns the count of printed characters when the function is successful and -1 when the function fails.
+The _printf() function produces output according to a format which is described below. This function write its output to the stdout, the standard output stream. Returns the count of printed characters when the function is successful and -1 when the function fails.
 
-*The available convertion specifiers are:
+The available convertion specifiers are:
 
 * %c: Prints a single character.
 * %s: Prints a string of characters.
@@ -37,10 +37,10 @@ _Jose Vallejo Contreras & Carlos Barros Amador_
 ## Example program
 * FINTION ("ARGUMENTS",...(variatic parameters))
 
-*printf: built-in funtion of C
+* printf: built-in funtion of C
 * _printf: Owner funtion
 * printf("=====================\n");
-* printfi("*****QAREVIW 3-20-2020*****\n");
+* printf("*****QAREVIW 3-20-2020*****\n");
 * printf("=====================\n");
 * _printf("Let's print a simple sentence.\n");
 * printf("Let's print a simple sentence.\n");
